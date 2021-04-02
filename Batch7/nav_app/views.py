@@ -12,6 +12,11 @@ def home(req):
 def lg(req):
 	return render(req,'navtemp/login.html')
 def reg(req):
+	""" if req.method=="POST":
+		emailaddress=req.POST['a'];
+		pas=req.POST['b'];
+		age=req.POST['ag'];
+		return render(req,'navtemp/home.html',{'info':emailaddress,'info1':pas,'info2':age})"""
 	return render(req,'navtemp/register.html')
 def bthm(req):
 	return render(req,'navtemp/bthm.html')
@@ -19,3 +24,16 @@ def about(req):
 	return render(req,'navtemp/about.html')
 def contact(req):
 	return render(req,'navtemp/contact.html')
+def rf(req):
+	return render(req,'navtemp/reg.html')
+def rega(req):
+	if req.method=="POST":
+		fn=req.POST['fname'];
+		ln=req.POST['lname'];
+		age=req.POST['age'];
+		mail=req.POST['email'];
+		pas=req.POST['pwd'];
+		pas1=req.POST['pwd1'];
+		d={'info':fn,'info1':ln,'info2':age,'info3':mail,'info4':pas,'info5':pas1}
+		return render(req,'navtemp/regadetails.html',{'d':d})
+	return render(req,'navtemp/rega.html')
